@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luciana & Rodrigo · 08.09.2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     NAVEGAÇÃO FIXA
+═══════════════════════════════════════════════════════ -->
+<nav class="nav-hero" id="main-nav" role="navigation" aria-label="Principal">
+  <ul class="nav-links">
+    <li><a href="#inicio">Início</a></li>
+    <li><a href="#convite">CONFIRMA A TUA PRESENÇA</a></li>
+    <li><a href="#detalhes">Detalhes</a></li>
+    <li><a href="#presentes">Presentes</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── MENU MÓVEL ────────────────────────────────────── -->
+<div class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Menu de navegação">
+  <a href="#inicio">Início</a>
+  <a href="#convite">Presença</a>
+  <a href="#detalhes">Detalhes</a>
+  <a href="#presentes">Presentes</a>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECÇÃO 1 — INÍCIO / HERO
+═══════════════════════════════════════════════════════ -->
+<section id="inicio" class="hero" aria-label="Início">
+  <div class="hero-content">
+    <span class="hero-eyebrow"></span>
+    <h1>Luciana &amp; Rodrigo</h1>
+    <p class="hero-date">08 · Setembro · 2026 · Fajã dos Padres</p>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+
+
+
+<!-- ── Convite ──────────────────────────────────────── -->
+<section id="convite" class="scroll-target fade-in">
+  <div class="page-header parchment-bg" style="padding-top: calc(var(--nav-h) + 40px);">
+    <span class="ornament">Chamem o Padre,</span>
+    <h1>VAMOS CASAR!</h1>
+    <div class="container fade-in">
+      <div class="divider divider--center"></div>
+      <p style="max-width:320px; margin: 0 auto;">
+        Após o delírio, premeditado do Rodrigo e espontâneo da Luciana, uma vez não havendo comprimidos nem hospital próximo, decidimos ir jantar marisco e começar a planear o nosso casamento. Posto isto, gostaríamos de convidar-vos para a festa mais épica da nossa história.
+      </p>
+    
+     <button class="btn" onclick="document.getElementById('rsvp-modal').classList.add('open')" style="max-width:220px; margin: 32px auto 0; display:block;">
+  Confirma a tua Presença
+</button>
+    </div>
+    <div class="divider divider--center"></div>
+    <p style="max-width:420px; margin: 0 auto;">
+      Por favor confirmem a vossa presença até 
+    </p>
+    <strong>21 de Junho de 2026</strong>.
+  </div>
+  </section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECÇÃO 2 — RSVP
+═══════════════════════════════════════════════════════ -->
+<div id="rsvp-modal" class="modal-overlay" onclick="if(event.target===this) this.classList.remove('open')">
+  <div class="modal-panel">
+
+    <button class="modal-close" onclick="document.getElementById('rsvp-modal').classList.remove('open')" aria-label="Fechar">✕</button>
+
+
+  <div class="page-header parchment-bg" style="padding-top: calc(var(--nav-h) + 40px);">
+    <span class="ornament">Se não gostassemos de ti, não eras convidado</span>
+    <h1>CONFIRMA A TUA PRESENÇA</h1>
+    <div class="divider divider--center"></div>
+    <p style="max-width:420px; margin: 0 auto;">
+      Por favor confirmem a vossa presença até <strong>21 de Junho de 2026</strong>.
+    </p>
+  </div>
+
+  <div style="padding: var(--section-pad) clamp(20px, 5vw, 80px);">
+    <div class="section-content fade-in visible">
+      <!--
+        CONFIGURAÇÃO FORMSPREE:
+        1. Aceda a https://formspree.io e crie uma conta gratuita
+        2. Crie um novo formulário — receberá um ID único como "xpwzabcd"
+        3. Substitua YOUR_FORM_ID abaixo por esse ID
+        4. O Formspree enviará um email por cada RSVP submetido
+      -->
+      <form
+        id="rsvp-form"
+        action="https://formspree.io/f/xkoqkvjn"
+        method="POST"
+        novalidate
+      >
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="form-group" data-name="name">
+          <label for="name">Nome Completo</label>
+          <input type="text" id="name" name="name" placeholder="Nome" required autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Endereço de Email</label>
+          <input type="text" id="email" name="email" placeholder="email"  autocomplete="email">
+        </div>
+
+            <div class="form-group custom-select-group">
+          <label>Confirmação de Presença</label>
+          <div class="custom-select" data-name="attending" data-required="true">
+            <div class="custom-select__trigger"><span></span></div>
+            <div class="custom-select__options">
+              <div class="custom-select__option" data-value="Confirma">Obviamente que vou lá Estar</div>
+              <div class="custom-select__option" data-value="Não">Não posso ir, tenho de arrumar uns papeis</div>
+            </div>
+          </div>
+          <input type="hidden" name="attending" required>
+        </div>
+
+        <div class="form-group custom-select-group">
+          <label>Vem Acompanhado/a?</label>
+          <div class="custom-select" data-name="guest" data-required="true">
+            <div class="custom-select__trigger"><span></span></div>
+            <div class="custom-select__options">
+              <div class="custom-select__option" data-value="Não">Não</div>
+              <div class="custom-select__option" data-value="Sim">Sim</div>
+            </div>
+          </div>
+          <input type="hidden" name="guest">
+        </div>
+
+        <div class="form-group" id="guest-name-group" style="display:none;">
+          <label for="guest-name">Quem é esse date?</label>
+          <input type="text" id="guest_name" name="guest_name" placeholder="nome do date">
+        </div>
+
+         <div class="form-group custom-select-group">
+          <label>Tem Restrições Alimentares?</label>
+          <div class="custom-select" data-name="restricao">
+            <div class="custom-select__trigger"><span></span></div>
+            <div class="custom-select__options">
+              <div class="custom-select__option" data-value="Não">Não</div>
+              <div class="custom-select__option" data-value="Sim">Sim</div>
+            </div>
+          </div>
+          <input type="hidden" name="restricao">
+        </div>
+        
+       
+
+         <div class="form-group" id="restricao-group" style="display:none;">
+          <label for="diet">Restrições</label>
+          <input type="text" id="diet" name="diet" placeholder="O que é que não passa nessa guela?">
+        </div>
+
+
+        <div class="form-group">
+          <label for="song">Pedido Musical</label>
+          <input type="text" id="song" name="song" placeholder="">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Mensagem para os Noivos</label>
+          <textarea id="message" name="message" placeholder=""></textarea>
+        </div>
+
+        <button type="submit" class="btn" id="submit-btn">Enviar Resposta</button>
+
+        <p id="form-error" style="color:#c0392b; font-family:var(--font-ui); font-size:12px; margin-top:12px; display:none;">
+          Por favor verifiquem todos os campos novamente. Em último caso falem connosco diretamente.
+        </p>
+      </form>
+
+      <div class="form-success" id="form-success">
+        <div class="check">✦</div>
+        <h3>Obrigado!</h3>
+        <p>Recebemos a vossa confirmação. Mal podemos esperar para celebrar convosco.</p>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+
+<!-- ── Banner central ───────────────────────────────── -->
+<div class="fullscreen-banner" role="img" aria-label="Lisboa">
+  <div class="fullscreen-banner-content fade-in">
+    <h2>Preparem-se para um Dia em Grande</h2>
+    <p>08 de Setembro de 2026</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECÇÃO 3 — DETALHES
+═══════════════════════════════════════════════════════ -->
+<section id="detalhes" class="scroll-target">
+  <div class="split" style="padding:0;">
+    <div
+      class="split-image fade-in"
+      style="background-image: url('fajã-dos-padres-22.jpg');"
+      role="img"
+      aria-label="Local da cerimónia"
+    ></div>
+    <div class="split-text fade-in">
+      <span class="ornament">Dia 08 de Setembro de 2026</span>
+      <h2>Cerimónia &amp; Festa</h2>
+
+      <div class="detail-grid" style="margin-top:28px;">
+       
+        <div class="detail-item fade-in">
+          <p class="label">Cerimónia</p>
+          <p>15h30</p>
+        </div>
+
+        <div class="detail-item fade-in">
+          <p class="label">Local da Cerimónia</p>
+          <p>Igreja Nossa Senhora dos Prazeres</p>
+          <p style="font-size: small;">Aldeia Galega da Merceana</p>
+          <a
+            href="https://maps.app.goo.gl/525nS3zmd5F7o1is6"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="map-btn"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            Igreja
+          </a>
+        </div>
+        
+        <div class="detail-item fade-in">
+          <p class="label">Local da Festa</p>
+          <p>Quinta Taipa</p>
+          <a
+            href="https://www.google.com/maps/place/Quinta+Taipa/@39.065897,-9.032885,17z/data=!4m6!3m5!1s0xd18da02e32f01d5:0x84c242d14bc43b7c!8m2!3d39.065714!4d-9.032821!16s%2Fg%2F1tdqjrbg?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="map-btn"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            Quinta
+          </a>
+        </div>
+
+        <div class="detail-item fade-in">
+          <p class="label">Estacionamento</p>
+          <p>Estacionamento gratuito mas uma moedinha para o Afonso Fernandes é sepre bem vinda</p>
+        </div>
+
+        <div class="detail-item fade-in">
+          <p class="label">Bom saber</p>
+          <p>Levem calções de banho, vai estar boa tosta</p>
+        </div>
+
+        <div class="detail-item fade-in">
+          <p class="label">Contatos</p>
+          <p>Lucianainaf2801@gmail.com</p>
+          <p>Rodrigoelsbcesar@gmail.com</p>
+          <p>insta: afonsobfernandez</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECÇÃO 4 — PRESENTES
+═══════════════════════════════════════════════════════ -->
+<section id="presentes" class="scroll-target fade-in">
+  <div class="page-header parchment-bg fade-in" style="padding-top: calc(var(--nav-h) + 40px);">
+    <span class="ornament">Sem estar a pedir demais...</span>
+    <h1>Um Miminho aqui para os Primos</h1>
+    <div class="divider divider--center"></div>
+    <p style="max-width:460px; margin: 0 auto;">
+      O maior presente que podemos receber neste dia, é sem dúvida a união da nossa família e amigos para celebrar o nosso amor.
+    </p>
+  </div>
+</section>  
+    <div class="photos-placeholder fade-in" style="padding: 80px 24px 120px;">
+       <h2 style="font-size: 1.8rem; margin-bottom: 16px;">No Entanto...</h2> 
+        <p style="max-width:600px; margin: 16px auto;">
+         Se quiserem contribuir para que na nossa lua de mel possamos comer Tacos e Burritos de alta qualidade (beber Tequil também), aceitamos de bom grado um miminho para o nosso porquinho.
+        </p>   
+     <button class="btn-donate fade-in" id="donate-btn" onclick="toggleIban()" aria-expanded="false">  Contribuir </button>
+    <div class="divider divider--center"> </div>
+        <div class="iban-box fade-in" id="iban-box" aria-live="polite">
+          <p class="iban-label">Transferência Bancária</p>
+          <div class="iban-number">
+            <span id="iban-text">PT50 0023 0000 4580 9907 8289 4</span>
+            <button class="copy-btn" id="copy-btn" onclick="copyIban()" aria-label="Copiar IBAN">  Copiar </button>
+          </div>
+          <p class="iban-name">Luciana / Rodrigo</p>
+          <p class="iban-note">
+            Por favor, indiquem o vosso nome na descrição da transferência.<br>
+          </p>
+        </div>
+      <p style="margin-top: 30px; font-style: italic; font-size: 1.2rem; color: var(--text-soft);">
+          O que sobrar irá para o nosso T-1 e para tentar sobreviver às inflações que se avizinham.
+      </p>
+    </div>
+
+
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECÇÃO 6 — H TIMELINE
+═══════════════════════════════════════════════════════ 
+
+
+<section id="fotos" class="scroll-target">
+  <div class="page-header parchment-bg" style="padding-top: calc(var(--nav-h) + 40px);">
+    <span class="ornament">Enquanto não há fotos do casamento</span>
+    <h1>Pequena Galeria</h1>
+    <div class="divider divider--center"></div>
+    <p style="max-width:320px; margin: 0 auto;">
+      Por agora, ficam aqui alguns momentos da nossa história. </p>
+    <p style="max-width:320px; margin: 0 auto;">Voltem aqui após o casamento para partilharmos convosco todas as fotos!  </div>
+ 
+
+<section class="h-timeline">
+  <div class="h-item top fade-in">
+    <div class="h-content">
+      <span class="h-date">2018</span>
+      <div class="h-image">
+        <img src="wetransferLucianaina/Tezza-7300.jpeg" alt="Momento 1">
+      </div>
+      <p>Como o tempo não vai estar</p>
+    </div>
+  </div>
+
+  <div class="h-item bottom fade-in">
+    <div class="h-content">
+      <span class="h-date">2019</span>
+      <div class="h-image">
+        <img src="wetransferLucianaina/Rafita.png" alt="Momento 2">
+      </div>
+      <p>El rafita</p>
+    </div>
+  </div>
+
+  <div class="h-item top fade-in">
+    <div class="h-content">
+      <span class="h-date">2021</span>
+      <div class="h-image">
+        <img src="wetransferLucianaina/IMG_7800.jpeg" alt="Momento 3">
+      </div>
+      <p>O nosso MC doggy doggy</p>
+    </div>
+  </div>
+
+  <div class="h-item bottom fade-in">
+    <div class="h-content">
+      <span class="h-date">2024</span>
+      <div class="h-image">
+        <img src="wetransferLucianaina/Tezza-1001.jpeg" alt="Momento 4">
+      </div>
+      <p>Sabem onde vai ser a lua de mel?</p>
+    </div>
+  </div>
+
+    <div class="h-item top fade-in">
+    <div class="h-content">
+      <span class="h-date">2024</span>
+      <div class="h-image">
+        <img src="wetransferLucianaina/92a98851-b2f9-4561-9872-1f0803fc0f3a.jpeg" alt="Momento 5">
+      </div>
+      <p>É Brindes, não é Penáltis</p>
+    </div>
+  </div>
+
+    <div class="h-item bottom fade-in">
+    <div class="h-content">
+      <span class="h-date">2024</span>
+      <div class="h-image">
+        <img src="wetransferLucianaina/d8458eb5-61c9-4f1a-90c4-af8264b7113d.jpeg" alt="Momento 6">
+      </div>
+      <p>Preparem a dancinha da gala</p>
+    </div>
+  </div>
+
+    <div class="h-item top fade-in">
+    <div class="h-content">
+      <span class="h-date">2024</span>
+      <div class="h-image">
+        <img src="wetransferLucianaina/IMG_9363.jpeg" alt="Momento 7">
+      </div>
+      <p>Não esquecer o fato de banho</p>
+    </div>
+  </div>
+
+</section>
+</section>
+-->
+
+ <div class="photos-placeholder fade-in" style="padding: 0 24px 120px;">
+       <h2 style="font-size: 1.8rem; margin-bottom: 16px;">Obrigado pela atenção</h2> 
+        <p style="max-width:600px; margin: 16px auto;">
+          Beijocas a todos, não se esqueçam de preencher o formulário!        </p>   
+    <div class="divider divider--center"> </div> 
+  </div>
+
+
+
+
+
+
+
+
+<!-- ══════════════════════════════════════════════════════
+     RODAPÉ
+═══════════════════════════════════════════════════════ -->
+<footer>
+  <p class="footer-names">Luciana &amp; Rodrigo</p>
+  <p class="footer-date">08 · 08 · 2026 · Fajã dos Padres</p>
+  <nav aria-label="Navegação do rodapé">
+    <a href="#inicio">Início</a>
+    <a href="#convite">Presença</a>
+    <a href="#detalhes">Detalhes</a>
+    <a href="#presentes">Presentes</a>
+  </nav>
+  <p class="footer-copy"></p>
+</footer>
+
+
+<!-- ══════════════════════════════════════════════════════
+     ESTILOS ESPECÍFICOS DESTA PÁGINA
+═══════════════════════════════════════════════════════ -->
+<style>
+  /* Scroll targets — account for fixed nav height */
+  .scroll-target {
+    scroll-margin-top: var(--nav-h);
+  }
+
+  /* section-block replicates section padding without the tag */
+  .section-block {
+    padding: var(--section-pad) clamp(20px, 5vw, 80px);
+  }
+
+  /* IBAN box (from gifts page) */
+  .iban-box {
+    display: none;
+    margin-top: 24px;
+    padding: 24px 28px;
+    background: var(--parchment);
+    border: 1px solid var(--gold-light);
+    border-top: 2px solid var(--gold);
+    animation: ibanReveal .4s ease;
+    text-align: left;
+  }
+  @keyframes ibanReveal {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .iban-box .iban-label {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .iban-box .iban-number {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .copy-btn {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-soft);
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: border-color .25s, color .25s;
+    flex-shrink: 0;
+  }
+  .copy-btn:hover, .copy-btn.copied { border-color: var(--gold); color: var(--gold); }
+  .iban-box .iban-name {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: var(--text-soft);
+    margin-top: 10px;
+  }
+  .iban-box .iban-note {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: #bbb;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+  .gift-single {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .gift-single h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .gift-single p {
+    font-size: 1.1rem;
+    color: var(--text-soft);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+  .btn-donate {
+    display: inline-block;
+    padding: 14px 40px;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    cursor: pointer;
+    transition: background .3s ease, color .3s ease;
+    width: 100%;
+    max-width: 300px;
+  }
+  .btn-donate:hover, .btn-donate.open { background: var(--gold); color: white; }
+
+  /* email reveal animation */
+  @keyframes emailReveal {
+    from { opacity:0; transform:translateY(8px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+</style>
+
+
+<!-- ══════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════ -->
+<script src="nav.js"></script>
+<script>
+  // ── RSVP form ─────────────────────────────────────────
+  // (guest show/hide is handled by the custom-select click handler below)
+
+  // ── Custom selects ──────────────────────────────────────
+document.querySelectorAll('.custom-select').forEach(sel => {
+  const trigger = sel.querySelector('.custom-select__trigger span');
+  const options = sel.querySelectorAll('.custom-select__option');
+  const hidden  = sel.closest('.form-group').querySelector('input[type="hidden"]');
+
+  sel.querySelector('.custom-select__trigger').addEventListener('click', e => {
+    e.stopPropagation();
+    document.querySelectorAll('.custom-select.open').forEach(o => { if(o !== sel) o.classList.remove('open'); });
+    sel.classList.toggle('open');
+  });
+
+  options.forEach(opt => {
+    opt.addEventListener('click', () => {
+      trigger.textContent = opt.textContent;
+      hidden.value = opt.dataset.value;
+      options.forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      sel.classList.remove('open');
+
+      if (hidden.name === 'guest') {
+        document.getElementById('guest-name-group').style.display =
+          opt.dataset.value === 'Sim' ? 'block' : 'none';
+      }
+
+      // ← ADD THIS
+      if (hidden.name === 'restricao') {
+        document.getElementById('restricao-group').style.display =
+          opt.dataset.value === 'Sim' ? 'block' : 'none';
+      }
+    });
+  });
+});
+
+// close on outside click
+document.addEventListener('click', () => {
+  document.querySelectorAll('.custom-select.open').forEach(o => o.classList.remove('open'));
+});
+
+
+  // ── FAQ accordion ─────────────────────────────────────
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item   = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+ 
+
+  function copyEmail() {
+    const email = document.getElementById('contact-email').textContent.trim();
+    const btn   = document.getElementById('copy-email-btn');
+    const done  = () => {
+      btn.textContent = '✓ Copiado';
+      setTimeout(() => { btn.textContent = 'Copiar'; }, 2500);
+    };
+    if (navigator.clipboard) { navigator.clipboard.writeText(email).then(done); }
+    else {
+      const el = document.createElement('textarea');
+      el.value = email; el.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(el); el.select();
+      document.execCommand('copy'); document.body.removeChild(el); done();
+    }
+  }
+
+ // ── IBAN reveal ───────────────────────────────────────
+  function toggleIban() {
+    const box = document.getElementById('iban-box');
+    const btn = document.getElementById('donate-btn');
+    const isOpen = box.style.display === 'block';
+    box.style.display = isOpen ? 'none' : 'block';
+    btn.classList.toggle('open', !isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+    btn.textContent = isOpen ? 'Contribuir' : 'Fechar';
+  }
+
+  function copyIban() {
+    const iban = document.getElementById('iban-text').textContent.trim();
+    const btn  = document.getElementById('copy-btn');
+    const done = () => {
+      btn.textContent = '✓ Copiado';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2500);
+    };
+    if (navigator.clipboard) { navigator.clipboard.writeText(iban).then(done); }
+    else {
+      const el = document.createElement('textarea');
+      el.value = iban; el.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(el); el.select();
+      document.execCommand('copy'); document.body.removeChild(el); done();
+    }
+  }
+
+  const form = document.getElementById('rsvp-form');
+const success = document.getElementById('form-success');
+const error = document.getElementById('form-error');
+
+form.addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  // 🔴 custom validation
+  const attending = form.querySelector('input[name="attending"]').value;
+  const guest = form.querySelector('input[name="guest"]').value;
+  const name = form.querySelector('input[name="name"]').value.trim();
+
+  if (!attending || !guest || !name) {
+    error.textContent = "Vá, preenche lá isso bem. Não custa muito.";
+    error.style.display = 'block';
+    return;
+  }
+
+  error.style.display = 'none';
+
+  const data = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    } else {
+      error.style.display = 'block';
+    }
+  } catch (err) {
+    error.style.display = 'block';
+  }
+});
+</script>
+
+</body>
+</html>
