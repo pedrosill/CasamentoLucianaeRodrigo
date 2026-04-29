@@ -256,7 +256,7 @@ nav:not(.nav-hero) .hamburger span {
   height: 100svh;
   height: 100dvh;
   min-height: 100%;
-  background: url('Faja\ agosto-076.jpg') center/cover no-repeat;
+  background: url('fotos/Faja_agosto-076.jpg') center/cover no-repeat;
   background-attachment: fixed;
   display: flex;
   align-items: center;
@@ -418,6 +418,81 @@ section {
   min-height: 400px;
 }
 
+.madeira-section {
+  background: var(--white);
+}
+
+.madeira-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: url('fotos/fajã-dos-padres-22.jpg') center/cover no-repeat;
+  color: white;
+}
+
+.madeira-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.24), rgba(0,0,0,0.72));
+}
+
+.madeira-hero-copy {
+  position: relative;
+  z-index: 1;
+  padding: 48px 24px;
+  max-width: 740px;
+}
+
+.madeira-hero-copy h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: white;
+  margin: 12px 0 16px;
+}
+
+.madeira-hero-copy p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.7;
+}
+
+.madeira-content {
+  padding: 0 clamp(20px, 5vw, 80px) 80px;
+}
+
+.madeira-recs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.madeira-card {
+  background: var(--parchment);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 28px 24px;
+}
+
+.madeira-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+}
+
+.madeira-card p {
+  color: var(--text-soft);
+  line-height: 1.75;
+}
+
+.madeira-gallery {
+  margin-top: 40px;
+}
+
 @media (max-width: 900px) {
   .split {
     grid-template-columns: 1fr;
@@ -426,13 +501,25 @@ section {
     min-height: 320px;
     order: -1;
   }
+
+  .madeira-hero {
+    min-height: 320px;
+  }
+
+  .madeira-hero-copy {
+    padding: 32px 20px;
+  }
+
+  .madeira-card {
+    padding: 22px 18px;
+  }
 }
 
 /* ─── FULLSCREEN BANNER ────────────────────────────────── */
 .fullscreen-banner {
   height: 60vh;
   min-height: 360px;
-  background: url('IMG_3964.jpg')  center/cover fixed no-repeat;
+  background: url('fotos/casal_01.jpeg')  center/cover fixed no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;

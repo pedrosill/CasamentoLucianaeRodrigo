@@ -16,7 +16,7 @@
     <li><a href="#inicio">Início</a></li>
     <li><a href="#convite">CONFIRMA A TUA PRESENÇA</a></li>
     <li><a href="#detalhes">Detalhes</a></li>
-  
+    <li><a href="#madeira">Madeira</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -26,9 +26,9 @@
 <!-- ── MENU MÓVEL ────────────────────────────────────── -->
 <div class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Menu de navegação">
   <a href="#inicio">Início</a>
-  <a href="#convite">Presença</a>
+  <a href="#convite" style="color: #c6a96b;">Presença</a>
   <a href="#detalhes">Detalhes</a>
-
+  <a href="#madeira">Madeira</a>
 </div>
 
 
@@ -106,20 +106,20 @@
       -->
       <form
         id="rsvp-form"
-        action="https://formspree.io/f/xkoqkvjn"
+        action="https://formgrid.dev/api/f/i01mo67o"
         method="POST"
         novalidate
       >
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
         <div class="form-group" data-name="name">
           <label for="name">Nome Completo</label>
-          <input type="text" id="name" name="name" placeholder="Nome" required autocomplete="name">
+          <input type="text" id="name" name="name" placeholder="O seu nome" required autocomplete="name">
         </div>
 
         <div class="form-group">
           <label for="email">Endereço de Email</label>
-          <input type="text" id="email" name="email" placeholder="email"  autocomplete="email">
+          <input type="text" id="email" name="email" placeholder="O seu email"  autocomplete="email">
         </div>
 
             <div class="form-group custom-select-group">
@@ -128,7 +128,7 @@
             <div class="custom-select__trigger"><span></span></div>
             <div class="custom-select__options">
               <div class="custom-select__option" data-value="Confirma">Obviamente que vou lá Estar</div>
-              <div class="custom-select__option" data-value="Não">Não posso ir, tenho de arrumar uns papeis</div>
+              <div class="custom-select__option" data-value="Não">Não posso ir, tenho uma consulta às 17h00</div>
             </div>
           </div>
           <input type="hidden" name="attending" required>
@@ -147,8 +147,8 @@
         </div>
 
         <div class="form-group" id="guest-name-group" style="display:none;">
-          <label for="guest-name">Quem é esse date?</label>
-          <input type="text" id="guest_name" name="guest_name" placeholder="nome do date">
+          <label for="guest-name">Nome do Acompanhante</label>
+          <input type="text" id="guest_name" name="guest_name" placeholder="Nome">
         </div>
 
          <div class="form-group custom-select-group">
@@ -167,24 +167,19 @@
 
          <div class="form-group" id="restricao-group" style="display:none;">
           <label for="diet">Restrições</label>
-          <input type="text" id="diet" name="diet" placeholder="O que é que não passa nessa guela?">
+          <input type="text" id="diet" name="diet" placeholder="vegetariano, intolerante a lactose, alérgico a amendoins...">
         </div>
 
 
         <div class="form-group">
           <label for="song">Pedido Musical</label>
-          <input type="text" id="song" name="song" placeholder="">
+          <input type="text" id="song" name="song" placeholder="A musica que não pode faltar...">
         </div>
 
-        <div class="form-group">
-          <label for="message">Mensagem para os Noivos</label>
-          <textarea id="message" name="message" placeholder=""></textarea>
-        </div>
-
+        
         <button type="submit" class="btn" id="submit-btn">Enviar Resposta</button>
 
         <p id="form-error" style="color:#c0392b; font-family:var(--font-ui); font-size:12px; margin-top:12px; display:none;">
-          Por favor verifiquem todos os campos novamente. Em último caso falem connosco diretamente.
         </p>
       </form>
 
@@ -203,7 +198,7 @@
 <!-- ── Banner central ───────────────────────────────── -->
 <div class="fullscreen-banner" role="img" aria-label="Lisboa">
   <div class="fullscreen-banner-content fade-in">
-    <h2>Preparem-se para um Dia em Grande</h2>
+    <h2>Um Dia em Grande</h2>
     <p>05 de Setembro de 2026</p>
   </div>
 </div>
@@ -215,7 +210,7 @@
   <div class="split" style="padding:0;">
     <div
       class="split-image fade-in"
-      style="background-image: url('casal_01.jpeg');"
+      style="background-image: url('fotos/caisFaja.jpg');"
       role="img"
       aria-label="Local da cerimónia"
     ></div>
@@ -286,14 +281,13 @@
   </section>
 
 
-
 <!-- ══════════════════════════════════════════════════════
      SECÇÃO 4 — PRESENTES
-═══════════════════════════════════════════════════════ 
+═══════════════════════════════════════════════════════ -->
 <section id="presentes" class="scroll-target fade-in">
   <div class="page-header parchment-bg fade-in" style="padding-top: calc(var(--nav-h) + 40px);">
-    <span class="ornament">Sem estar a pedir demais...</span>
-    <h1>Um Miminho aqui para os Primos</h1>
+    <span class="ornament">Depois do Casamento</span>
+    <h1>A nossa Lua de Mel</h1>
     <div class="divider divider--center"></div>
     <p style="max-width:460px; margin: 0 auto;">
       O maior presente que podemos receber neste dia, é sem dúvida a união da nossa família e amigos para celebrar o nosso amor.
@@ -324,108 +318,135 @@
     </div>
 
 
--->
-
 <!-- ══════════════════════════════════════════════════════
-     SECÇÃO 6 — H TIMELINE
-═══════════════════════════════════════════════════════ 
-
-
-<section id="fotos" class="scroll-target">
-  <div class="page-header parchment-bg" style="padding-top: calc(var(--nav-h) + 40px);">
-    <span class="ornament">Enquanto não há fotos do casamento</span>
-    <h1>Pequena Galeria</h1>
-    <div class="divider divider--center"></div>
-    <p style="max-width:320px; margin: 0 auto;">
-      Por agora, ficam aqui alguns momentos da nossa história. </p>
-    <p style="max-width:320px; margin: 0 auto;">Voltem aqui após o casamento para partilharmos convosco todas as fotos!  </div>
- 
-
-<section class="h-timeline">
-  <div class="h-item top fade-in">
-    <div class="h-content">
-      <span class="h-date">2018</span>
-      <div class="h-image">
-        <img src="wetransferLucianaina/Tezza-7300.jpeg" alt="Momento 1">
-      </div>
-      <p>Como o tempo não vai estar</p>
+     SECÇÃO 4 — MADEIRA 
+═══════════════════════════════════════════════════════ -->
+<section id="madeira" class="scroll-target madeira-section">
+  <div class="madeira-hero fade-in" role="img" aria-label="Madeira — o nosso roteiro">
+    <div class="madeira-hero-copy">
+      <span class="ornament">Madeira</span>
+      <h2>O que recomendamos</h2>
     </div>
   </div>
 
-  <div class="h-item bottom fade-in">
-    <div class="h-content">
-      <span class="h-date">2019</span>
-      <div class="h-image">
-        <img src="wetransferLucianaina/Rafita.png" alt="Momento 2">
+  <div class="madeira-content">
+
+
+<!--  Details in MADEIRA-->
+<div class="split-text fade-in">
+
+      <span class="ornament">Na Ilha</span>
+            <p>Alguns cantinhos e experiências na ilha para aproveitar antes ou depois do nosso grande dia.</p>
+
+
+      <div class="detail-grid" style="margin-top:28px;">
+       
+        <div class="detail-item fade-in">
+          <p class="label">something here</p>
+          <p>something here</p>
+        </div>
+
+        <div class="detail-item fade-in">
+          <p class="label">something here</p>
+          <p>something here</p>
+          <p style="font-size: small;">something here</p>
+          <a
+            href="https://maps.app.goo.gl/525nS3zmd5F7o1is6"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="map-btn"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            something here
+          </a> 
+        </div>
+
+        <div class="detail-item fade-in">
+          <p class="label">something here</p>
+          <p>something here</p>
+          <a
+            href="https://www.google.com/maps/place/Quinta+Taipa/@39.065897,-9.032885,17z/data=!4m6!3m5!1s0xd18da02e32f01d5:0x84c242d14bc43b7c!8m2!3d39.065714!4d-9.032821!16s%2Fg%2F1tdqjrbg?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="map-btn"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            something here
+          </a>
+        </div>
+      
+        <div class="detail-item fade-in">
+          <p class="label">Alojamento Recomendado</p>
+            <p>Hotel Dolce Campo Real Lisboa</p>
+            <p>Leziria Parque Hotel</p>
+            <p>Apartamentos Booking</p>
+          
+        </div>
+
+       
       </div>
-      <p>El rafita</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+    <!--  Madeira Cards-->
+
+
+
+
+
+
+
+
+    
+    <div class="madeira-recs">
+      <article class="madeira-card fade-in">
+        <h3>Roteiro de manhã</h3>
+        <p>Comecem o dia com um passeio pelos miradouros e pelo litoral sul da ilha.</p>
+      </article>
+      <article class="madeira-card fade-in">
+        <h3>Melhor vista</h3>
+        <p>O miradouro do Cabo Girão é obrigatório — vistas épicas e aquele cenário de cortar a respiração.</p>
+      </article>
+      <article class="madeira-card fade-in">
+        <h3>Praias e água</h3>
+        <p>As praias de Seixal e Formosa são perfeitas para relaxar e aproveitar o clima madeirense.</p>
+      </article>
+      <article class="madeira-card fade-in">
+        <h3>Sabores locais</h3>
+        <p>Experimentem bolo do caco com manteiga de alho e uma poncha bem típica.</p>
+      </article>
+    </div>
+
+    <div class="madeira-gallery couple-gallery">
+      <img src="fotos/LRCasa.jpeg" alt="Miradouro da Madeira">
+      <img src="fotos/os4_01.jpeg" alt="Praia na Madeira">
+      <img src="fotos/os4_02.jpeg" alt="Gastronomia madeirense">
+      <img src="fotos/os4_03.jpeg" alt="Senda natural na Madeira">
     </div>
   </div>
-
-  <div class="h-item top fade-in">
-    <div class="h-content">
-      <span class="h-date">2021</span>
-      <div class="h-image">
-        <img src="wetransferLucianaina/IMG_7800.jpeg" alt="Momento 3">
-      </div>
-      <p>O nosso MC doggy doggy</p>
-    </div>
-  </div>
-
-  <div class="h-item bottom fade-in">
-    <div class="h-content">
-      <span class="h-date">2024</span>
-      <div class="h-image">
-        <img src="wetransferLucianaina/Tezza-1001.jpeg" alt="Momento 4">
-      </div>
-      <p>Sabem onde vai ser a lua de mel?</p>
-    </div>
-  </div>
-
-    <div class="h-item top fade-in">
-    <div class="h-content">
-      <span class="h-date">2024</span>
-      <div class="h-image">
-        <img src="wetransferLucianaina/92a98851-b2f9-4561-9872-1f0803fc0f3a.jpeg" alt="Momento 5">
-      </div>
-      <p>É Brindes, não é Penáltis</p>
-    </div>
-  </div>
-
-    <div class="h-item bottom fade-in">
-    <div class="h-content">
-      <span class="h-date">2024</span>
-      <div class="h-image">
-        <img src="wetransferLucianaina/d8458eb5-61c9-4f1a-90c4-af8264b7113d.jpeg" alt="Momento 6">
-      </div>
-      <p>Preparem a dancinha da gala</p>
-    </div>
-  </div>
-
-    <div class="h-item top fade-in">
-    <div class="h-content">
-      <span class="h-date">2024</span>
-      <div class="h-image">
-        <img src="wetransferLucianaina/IMG_9363.jpeg" alt="Momento 7">
-      </div>
-      <p>Não esquecer o fato de banho</p>
-    </div>
-  </div>
-
 </section>
-</section>
--->
+
+
 
  <div class="photos-placeholder fade-in" style="padding: 0 24px 120px;">
        <h2 style="font-size: 1.8rem; margin-bottom: 16px;">Obrigado pela atenção</h2> 
         <p style="max-width:600px; margin: 16px auto;">
-          Beijocas a todos, não se esqueçam de preencher o formulário!        </p>   
+        Não se esqueçam de preencher o formulário!        </p>   
     <div class="divider divider--center"> </div> 
   </div>
-
-
-
-
 
 
 
@@ -440,7 +461,7 @@
     <a href="#inicio">Início</a>
     <a href="#convite">Presença</a>
     <a href="#detalhes">Detalhes</a>
-   
+    <a href="#madeira">Madeira</a>
   </nav>
   <p class="footer-copy"></p>
 </footer>
@@ -570,7 +591,7 @@
   // ── RSVP form ─────────────────────────────────────────
   // (guest show/hide is handled by the custom-select click handler below)
 
-  // ── Custom selects ──────────────────────────────────────
+   // ── Custom selects ──────────────────────────────────────
 document.querySelectorAll('.custom-select').forEach(sel => {
   const trigger = sel.querySelector('.custom-select__trigger span');
   const options = sel.querySelectorAll('.custom-select__option');
@@ -675,6 +696,7 @@ document.addEventListener('click', () => {
 const success = document.getElementById('form-success');
 const error = document.getElementById('form-error');
 
+
 form.addEventListener('submit', async function (e) {
   e.preventDefault();
 
@@ -684,7 +706,7 @@ form.addEventListener('submit', async function (e) {
   const name = form.querySelector('input[name="name"]').value.trim();
 
   if (!attending || !guest || !name) {
-    error.textContent = "Vá, preenche lá isso bem. Não custa muito.";
+    error.textContent = "Nome, Presença e Acompanhado/a são campos obrigatórios.";
     error.style.display = 'block';
     return;
   }
@@ -693,24 +715,27 @@ form.addEventListener('submit', async function (e) {
 
   const data = new FormData(form);
 
-  try {
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: data,
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
+ try {
+  const response = await fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    },
+    redirect: 'manual'
+  });
 
-    if (response.ok) {
-      form.style.display = 'none';
-      success.style.display = 'block';
-    } else {
-      error.style.display = 'block';
-    }
-  } catch (err) {
+  if (response.type === 'opaqueredirect' || response.ok) {
+    form.style.display = 'none';
+    success.style.display = 'block';
+  } else {
     error.style.display = 'block';
   }
+
+} catch (err) {
+  console.error(err);
+  error.style.display = 'block';
+}
 });
 </script>
 
