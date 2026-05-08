@@ -102,13 +102,6 @@
 
   <div style="padding: var(--section-pad) clamp(20px, 5vw, 80px);">
     <div class="section-content fade-in visible">
-      <!--
-        CONFIGURAÇÃO FORMSPREE:
-        1. Aceda a https://formspree.io e crie uma conta gratuita
-        2. Crie um novo formulário — receberá um ID único como "xpwzabcd"
-        3. Substitua YOUR_FORM_ID abaixo por esse ID
-        4. O Formspree enviará um email por cada RSVP submetido
-      -->
       <form
         id="rsvp-form"
         action="https://formgrid.dev/api/f/i01mo67o"
@@ -132,8 +125,8 @@
           <div class="custom-select" data-name="attending" data-required="true">
             <div class="custom-select__trigger"><span></span></div>
             <div class="custom-select__options">
-              <div class="custom-select__option" data-value="Confirma">Obviamente que vou lá Estar</div>
-              <div class="custom-select__option" data-value="Não">Não posso ir, tenho uma consulta às 17h00</div>
+              <div class="custom-select__option" data-value="Confirma">Confirmo a minha presença</div>
+              <div class="custom-select__option" data-value="Não">Não poderei comparecer</div>
             </div>
           </div>
           <input type="hidden" name="attending" required>
@@ -171,7 +164,7 @@
        
 
          <div class="form-group" id="restricao-group" style="display:none;">
-          <label for="diet">Restrições</label>
+          <label for="diet">Indique as suas restrições alimentares</label>
           <input type="text" id="diet" name="diet" placeholder="vegetariano, intolerante a lactose, alérgico a amendoins...">
         </div>
 
@@ -286,23 +279,23 @@
     <div class="photos-placeholder fade-in" style="padding: 80px 24px 120px;">
        <h2 style="font-size: 1.8rem; margin-bottom: 16px;">A viagem</h2>
         <p style="max-width:600px; margin: 16px auto;">
-         
+          Criámos uma conta de contribuições para a nossa Lua de Mel, será para realizar pelo menos uma viagem ao Brasil. Se quiserem contribuir, basta clicar no botão abaixo para acederem aos detalhes.
         </p>   
      <button class="btn-donate fade-in" id="donate-btn" onclick="toggleIban()" aria-expanded="false">  Contribuir </button>
     <div class="divider divider--center"> </div>
         <div class="iban-box fade-in" id="iban-box" aria-live="polite">
           <p class="iban-label">Transferência Bancária</p>
           <div class="iban-number">
-            <span id="iban-text">PT50 0023 0000 4580 9907 8289 4</span>
+            <span id="iban-text">PT50 0018 0008 0003 1558 0204 7</span>
             <button class="copy-btn" id="copy-btn" onclick="copyIban()" aria-label="Copiar IBAN">  Copiar </button>
           </div>
-          <p class="iban-name">Luciana / Rodrigo</p>
+          <p class="iban-name">Titular: TRAVEL4U - AG DE VIAGENS</p>
           <p class="iban-note">
-            Por favor, indiquem o vosso nome na descrição da transferência.<br>
+            Por favor, indiquem o vosso nome e o código FILE 16000 LR na descrição da transferência.<br>
           </p>
         </div>
       <p style="margin-top: 30px; font-style: italic; font-size: 1.2rem; color: var(--text-soft);">
-          O que sobrar irá para o nosso T-1 e para tentar sobreviver às inflações que se avizinham.
+          É muito importante que coloquem o indicativo "FILE 16000 LR" na descrição da transferência.
       </p>
     </div>
 
@@ -324,12 +317,12 @@
 <!--  Details in MADEIRA-->
 <div class="split-text fade-in">
       <span class="ornament">Na Ilha</span>
-            <p>Queremos ajudar-vos a planearem uns dias em grande na Ilha da Madeira, iremos atualizar o site mais tarde para outras recomendações.</p>    
+            <p>Queremos ajudar-vos a planearem uns dias em grande na Ilha da Madeira, iremos atualizar o site mais tarde para outras recomendações. Por agora aproveitem os códigos de desconto que temos para os seguintes hóteis:</p>    
       <div class="detail-grid" style="margin-top:80px;">
        
-        <h2 style="font-size: 1.8rem; margin-bottom: 16px;">Hotéis com Cupões Nossos</h2> 
+        <h2 style="font-size: 1.8rem; margin-bottom: 16px;">Hotéis com os Nossos Cupões </h2> 
         <h3>Datas de estadia: 30/08/2026 a 13/09/2026</h3>
-        <h3 style="margin-bottom: 32px;">Booking window: 09/03/2026 a 04/09/2026
+        <h3 style="margin-bottom: 32px;"><strong>Booking window:</strong> 09/03/2026 a 04/09/2026
 
      </div>
     <div class="detail-grid" style="margin-top:28px;">
@@ -337,7 +330,7 @@
         <div class="detail-item fade-in">
           <p class="label">Hotéis Dorisol</p>
           <p>Dorisol Estrelícia</p>
-          <p style="font-size: small;">código:  rodrigoJF </p>
+          <p style="font-size: small; font-weight: bold;">código:  rodrigoJF </p>
           <a
             href="https://www.dorisol.com/pt/dorisol-estrelicia/"
             target="_blank"
@@ -355,7 +348,7 @@
         <div class="detail-item fade-in">
           <p class="label">Porto Bay </p>
           <p>Vila Porto Mare</p>
-          <p style="font-size: small;">código: LR2026</p>
+          <p style="font-size: small; font-weight: bold;">código: LR2026</p>
           <a
             href="https://www.portobay.com/pt/hotels/madeira-hotels/porto-mare"
             target="_blank"
@@ -366,14 +359,14 @@
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
               <circle cx="12" cy="9" r="2.5"/>
             </svg>
-            Website do Hotel
+            Website da VilaPorto Mare
           </a>
         </div>
 
         <div class="detail-item fade-in">
           <p class="label">Porto Bay </p>
           <p>The Cliff Bay</p>
-          <p style="font-size: small;">código: LR2026</p>
+          <p style="font-size: small; font-weight: bold;">código: LR2026</p>
           <a
             href="https://www.portobay.com/pt/hotels/madeira-hotels/the-cliff-bay"
             target="_blank"
@@ -384,14 +377,14 @@
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
               <circle cx="12" cy="9" r="2.5"/>
             </svg>
-            Website do Hotel
+            Website do Hotel The Cliff Bay
           </a>
         </div>
 
         <div class="detail-item fade-in">
           <p class="label">Porto Bay </p>
           <p>Les Suites at The Cliff Bay</p>
-          <p style="font-size: small;">código: LR2026</p>
+          <p style="font-size: small; font-weight: bold;">código: LR2026</p>
           <a
             href="https://www.portobay.com/pt/hoteis/hoteis-madeira/les-suites-at-the-cliff-bay"
             target="_blank"
@@ -402,14 +395,14 @@
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
               <circle cx="12" cy="9" r="2.5"/>
             </svg>
-            Website do Hotel
+            Website do Hotel Les Suites at The Cliff Bay
           </a>
         </div>
 
         <div class="detail-item fade-in">
           <p class="label">PortoBay </p>
           <p>Porto Bay Serra Golf</p>
-          <p style="font-size: small;">código: LR2026</p>
+          <p style="font-size: small; font-weight: bold;  ">código: LR2026</p>
           <a
             href="https://www.portobay.com/pt/hoteis/hoteis-madeira/portobay-serra-golf"
             target="_blank"
@@ -420,7 +413,7 @@
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
               <circle cx="12" cy="9" r="2.5"/>
             </svg>
-            Website do Hotel
+            Website do Hotel Porto Bay Serra Golf
           </a>
         </div>
       </div>
@@ -444,7 +437,7 @@
           </button>
         </dt>
         <dd class="faq-answer">
-          <p>Sim, existe estacionamento gratuito nos locais. Existe também estacionamento gratuito nas imediações</p>
+          <p>O local dispõe de estacionamento gratuito, embora com lugares limitados. Por esse motivo, sugerimos que considerem a utilização de Uber, táxi ou partilha de transporte.</p>
         </dd>
       </div>
 
@@ -480,7 +473,7 @@
           </button>
         </dt>
         <dd class="faq-answer">
-          <p>Sugerimos cores claras, tecidos leves e confortáveis, adequados para celebrar connosco à beira‑mar.</p>
+          <p>Sugerimos cores claras, tecidos leves e confortáveis, adequados para celebrar connosco à beira‑mar. Algo casural Casual/Praia/Descontraído</p>
         </dd>
       </div>
 
@@ -492,34 +485,13 @@
           </button>
         </dt>
         <dd class="faq-answer">
-          <p>Com certeza. Por favor indiquem as vossas restrições alimentares no RSVP e garantimos que ficarão bem servidos.</p>
+          <p>Com certeza. Por favor indiquem as vossas restrições alimentares no Formulário e garantimos que ficarão bem servidos.</p>
         </dd>
       </div>
 
-      <div class="faq-item">
-        <dt>
-          <button class="faq-question" aria-expanded="false">
-            O local tem acessibilidade para cadeiras de rodas?
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-        </dt>
-        <dd class="faq-answer">
-          <p>Sim, o local é totalmente acessível. Se necessitar de alguma adaptação específica, por favor avise-nos com antecedência para que possamos providenciar tudo.</p>
-        </dd>
-      </div>
+     
 
-      <div class="faq-item">
-        <dt>
-          <button class="faq-question" aria-expanded="false">
-            Posso tirar fotografias durante a cerimónia?
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-        </dt>
-        <dd class="faq-answer">
-          <p>As fotografias são muito bem-vindas!</p>
-        </dd>
-      </div>
-
+      
       <div class="faq-item">
         <dt>
           <button class="faq-question" aria-expanded="false">
@@ -528,7 +500,7 @@
           </button>
         </dt>
         <dd class="faq-answer">
-          <p>A quinta situa-se a cerca de 40 min de Lisboa, completamente acessível para voltar após a festa, contudo para realmente disfrutar... É o que recomendamos :)</p>
+          <p>Recomedamos que aproveitem a oportunidade para visitar a Ilha da Madeira, arranjámos alguns códigos de desconto, mas sintam-se à vontade para ficarem onde se sentirem mais confortáveis.</p>
         </dd>
       </div>
 
