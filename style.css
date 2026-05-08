@@ -561,7 +561,7 @@ section {
 
 /* ─── FORM ─────────────────────────────────────────────── */
 .form-group {
-  margin-bottom: 8px;
+  margin-bottom: 40px;
   text-align: left;
 }
 
@@ -605,7 +605,7 @@ select {
 
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-bottom-color: var(--gold);
+ 
 }
 
 input::placeholder, textarea::placeholder {
@@ -981,7 +981,7 @@ footer .footer-copy {
   left: -1px;
   right: -1px;
   background: var(--parchment);
-  border: 1px solid var(--gold);
+  border: 0.3px solid #bbb;
   border-top: none;
   z-index: 10;
   max-height: 0;
