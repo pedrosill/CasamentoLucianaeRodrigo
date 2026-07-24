@@ -686,6 +686,99 @@ input::placeholder, textarea::placeholder {
   color: var(--text);
 }
 
+/* ─── TRANSPORT CARD ───────────────────────────────────────── */
+
+.transport-label {
+  font-size: 2rem;
+}
+
+.transport-card {
+  background: var(--parchment);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 28px;
+  box-shadow: none;
+}
+
+.transport-card__header {
+  margin-bottom: 30px;
+}
+
+.transport-card__intro {
+  font-size: 1.05rem;
+  color: var(--text-soft);
+  line-height: 1.75;
+}
+
+.transport-card__body {
+  display: grid;
+  gap: 18px;
+}
+
+.transport-route {
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+}
+
+.transport-route:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.transport-route h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: var(--text);
+  letter-spacing: 0.5px;
+}
+
+.transport-time-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.transport-time {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--gold);
+  min-width: 54px;
+}
+
+.transport-text {
+  font-size: 1rem;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+.transport-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.98rem;
+  color: var(--text-soft);
+  line-height: 1.75;
+}
+
+@media (max-width: 768px) {
+  .transport-card {
+    padding: 22px;
+    border-radius: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  .transport-time-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
 /* ─── FAQ ACCORDION ────────────────────────────────────── */
 .faq-list {
   margin-top: 40px;
