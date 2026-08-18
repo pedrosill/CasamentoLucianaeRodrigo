@@ -694,7 +694,6 @@ input::placeholder, textarea::placeholder {
 
 .transport-card {
   background: var(--parchment);
-  border: 1px solid var(--border);
   border-radius: 0;
   padding: 28px;
   box-shadow: none;
@@ -763,6 +762,57 @@ input::placeholder, textarea::placeholder {
   color: var(--text-soft);
   line-height: 1.75;
 }
+
+.transport-booking-toggle {
+  max-width: 260px;
+  margin-top: 28px;
+}
+
+.transport-booking {
+  margin-top: 30px;
+  padding: 28px clamp(20px, 3vw, 32px) 22px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--gold-light);
+  box-shadow: 0 12px 28px rgba(43, 43, 43, 0.06);
+  animation: fadeIn 0.45s ease both;
+}
+
+.transport-anchor {
+  scroll-margin-top: calc(var(--nav-h) + 24px);
+}
+
+.transport-booking__intro {
+  margin-bottom: 28px;
+}
+
+.transport-booking__intro h3 {
+  margin-bottom: 8px;
+}
+
+.transport-booking__intro p {
+  color: var(--text-soft);
+  font-size: 0.98rem;
+}
+
+.transport-booking .form-group {
+  margin-bottom: 28px;
+}
+
+.transport-booking .btn {
+  margin-top: 0;
+}
+
+.minibus-form-message {
+  min-height: 20px;
+  margin-top: 16px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  color: var(--text-soft);
+}
+
+.minibus-form-message.success { color: #71865c; }
+.minibus-form-message.error { color: #b85b4d; }
 
 @media (max-width: 768px) {
   .transport-card {

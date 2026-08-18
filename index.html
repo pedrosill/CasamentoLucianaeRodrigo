@@ -16,6 +16,7 @@
     <li><a href="#inicio">Início</a></li>
     <li><a href="#convite">CONFIRMA A TUA PRESENÇA</a></li>
     <li><a href="#detalhes">Detalhes</a></li>
+    <li><a href="#transporte">Transporte</a></li>
     <li><a href="#madeira">Madeira</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
@@ -28,6 +29,7 @@
   <a href="#inicio">Início</a>
   <a href="#convite" style="color: #c6a96b;">Presença</a>
   <a href="#detalhes">Detalhes</a>
+  <a href="#transporte">Transporte</a>
   <a href="#madeira">Madeira</a>
 </div>
 
@@ -425,7 +427,7 @@
         </div>
       </div>
 
-      <div class="detail-grid" style="margin-top: 85px;">
+      <div class="detail-grid transport-anchor" id="transporte" style="margin-top: 85px;">
         <div class="transport-card fade-in">
           <div class="transport-card__header">
             <p class="transport-label">Transporte para o Casamento</p>
@@ -455,6 +457,64 @@
           </div>
 
           <p class="transport-note">Caso pretendam utilizar este serviço, agradecemos que o indiquem na confirmação de presença.</p>
+
+          <button
+            type="button"
+            class="btn transport-booking-toggle"
+            id="minibus-toggle"
+            aria-expanded="false"
+            aria-controls="minibus-booking"
+          >
+            Reservar minibus
+          </button>
+
+          <div class="transport-booking" id="minibus-booking" hidden>
+            <div class="transport-booking__intro">
+              <h3>Reserva de minibus</h3>
+              <p>Indique os seus dados para reservar lugar no transporte.</p>
+            </div>
+
+            <form
+              id="minibus-form"
+              action="https://formgrid.dev/api/f/j6cwwi0q"
+              method="POST"
+            >
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+              <input type="hidden" name="form_type" value="Reserva de minibus">
+
+              <div class="form-group">
+                <label for="minibus-name">Nome</label>
+                <input type="text" id="minibus-name" name="minibus_name" placeholder="O seu nome" required autocomplete="name">
+              </div>
+
+              <div class="form-group">
+                <label for="minibus-email">Email</label>
+                <input type="email" id="minibus-email" name="minibus_email" placeholder="O seu email" required autocomplete="email">
+              </div>
+
+              <div class="form-group">
+                <label for="minibus-phone">Contacto telefónico</label>
+                <input type="tel" id="minibus-phone" name="minibus_phone" placeholder="O seu contacto" required autocomplete="tel">
+              </div>
+
+              <div class="form-group">
+                <label for="minibus-hotel">Hotel de partida</label>
+                <select id="minibus-hotel" name="minibus_hotel" required>
+                  <option value="" selected disabled>Selecione o hotel</option>
+                  <option value="Hotel Cliff Bay">Hotel Cliff Bay</option>
+                  <option value="Hotéis Dorisol">Hotéis Dorisol</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="minibus-guests">Número de pessoas</label>
+                <input type="number" id="minibus-guests" name="minibus_guests" min="1" step="1" placeholder="Ex.: 2" required>
+              </div>
+
+              <button type="submit" class="btn">Enviar reserva</button>
+              <p class="minibus-form-message" id="minibus-form-message" role="status" aria-live="polite"></p>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -749,6 +809,46 @@ document.querySelectorAll('.custom-select').forEach(sel => {
 document.addEventListener('click', () => {
   document.querySelectorAll('.custom-select.open').forEach(o => o.classList.remove('open'));
 });
+
+// ── Minibus booking form ─────────────────────────────────
+const minibusToggle = document.getElementById('minibus-toggle');
+const minibusBooking = document.getElementById('minibus-booking');
+const minibusForm = document.getElementById('minibus-form');
+const minibusMessage = document.getElementById('minibus-form-message');
+
+if (minibusToggle && minibusBooking && minibusForm) {
+  minibusToggle.addEventListener('click', () => {
+    const isOpen = !minibusBooking.hasAttribute('hidden');
+    minibusBooking.toggleAttribute('hidden', isOpen);
+    minibusToggle.setAttribute('aria-expanded', String(!isOpen));
+    minibusToggle.textContent = isOpen ? 'Reservar minibus' : 'Fechar reserva';
+  });
+
+  minibusForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    minibusMessage.textContent = 'A enviar a sua reserva…';
+    minibusMessage.className = 'minibus-form-message';
+
+    try {
+      const response = await fetch(minibusForm.action, {
+        method: 'POST',
+        body: new FormData(minibusForm),
+        headers: { Accept: 'application/json' }
+      });
+
+      if (!response.ok) throw new Error('Não foi possível enviar a reserva.');
+      minibusForm.reset();
+      minibusMessage.textContent = 'Reserva recebida. Obrigado!';
+      minibusMessage.classList.add('success');
+      minibusBooking.setAttribute('hidden', '');
+      minibusToggle.setAttribute('aria-expanded', 'false');
+      minibusToggle.textContent = 'Reservar minibus';
+    } catch (error) {
+      minibusMessage.textContent = 'Não foi possível enviar a reserva. Tente novamente.';
+      minibusMessage.classList.add('error');
+    }
+  });
+}
 
 
   // ── FAQ accordion ─────────────────────────────────────
