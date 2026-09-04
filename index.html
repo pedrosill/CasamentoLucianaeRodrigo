@@ -458,6 +458,8 @@
 
           <p class="transport-note">Caso pretendam utilizar este serviço, agradecemos que o indiquem na confirmação de presença.</p>
 
+          <p class="minibus-availability" id="minibus-availability" role="status" aria-live="polite">A verificar vagas disponíveis…</p>
+
           <button
             type="button"
             class="btn transport-booking-toggle"
@@ -815,8 +817,113 @@ const minibusToggle = document.getElementById('minibus-toggle');
 const minibusBooking = document.getElementById('minibus-booking');
 const minibusForm = document.getElementById('minibus-form');
 const minibusMessage = document.getElementById('minibus-form-message');
+const minibusGuests = document.getElementById('minibus-guests');
+const minibusAvailability = document.getElementById('minibus-availability');
+const MINIBUS_CAPACITY = 50;
+const MINIBUS_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1VNxlDAo9lFJYnUgF_3ABwHlD0P73kXGdGoX40x2MQlE/export?format=csv&gid=0';
+let minibusReservedPeople = 0;
+let minibusAvailabilityReady = false;
+
+function parseMinibusCsv(csv) {
+  const rows = [];
+  let row = [];
+  let value = '';
+  let inQuotes = false;
+
+  for (let index = 0; index < csv.length; index += 1) {
+    const character = csv[index];
+    const nextCharacter = csv[index + 1];
+
+    if (character === '"' && inQuotes && nextCharacter === '"') {
+      value += '"';
+      index += 1;
+    } else if (character === '"') {
+      inQuotes = !inQuotes;
+    } else if (character === ',' && !inQuotes) {
+      row.push(value);
+      value = '';
+    } else if ((character === '\n' || character === '\r') && !inQuotes) {
+      if (character === '\r' && nextCharacter === '\n') index += 1;
+      row.push(value);
+      if (row.some(cell => cell.trim() !== '')) rows.push(row);
+      row = [];
+      value = '';
+    } else {
+      value += character;
+    }
+  }
+
+  if (value || row.length) {
+    row.push(value);
+    if (row.some(cell => cell.trim() !== '')) rows.push(row);
+  }
+
+  return rows;
+}
+
+function updateMinibusAvailability() {
+  if (!minibusAvailabilityReady) {
+    minibusAvailability.textContent = 'A verificar vagas disponíveis…';
+    minibusToggle.hidden = true;
+    minibusBooking.setAttribute('hidden', '');
+    return;
+  }
+
+  const remaining = Math.max(0, MINIBUS_CAPACITY - minibusReservedPeople);
+  const isSoldOut = remaining === 0;
+
+  if (minibusAvailability) {
+    minibusAvailability.textContent = isSoldOut
+      ? 'As reservas de minibus estão encerradas.'
+      : `Restam apenas ${remaining} ${remaining === 1 ? 'vaga' : 'vagas'} para o minibus.`;
+    minibusAvailability.classList.toggle('sold-out', isSoldOut);
+  }
+
+  if (minibusToggle) {
+    minibusToggle.hidden = isSoldOut;
+    minibusToggle.setAttribute('aria-hidden', String(isSoldOut));
+  }
+
+  if (minibusBooking && isSoldOut) {
+    minibusBooking.setAttribute('hidden', '');
+    minibusToggle?.setAttribute('aria-expanded', 'false');
+  }
+
+  if (minibusGuests) {
+    minibusGuests.max = String(remaining);
+  }
+}
+
+async function loadMinibusAvailability() {
+  updateMinibusAvailability();
+
+  try {
+    const response = await fetch(MINIBUS_SHEET_CSV_URL, { cache: 'no-store' });
+    if (!response.ok) throw new Error('Não foi possível consultar a folha de reservas.');
+
+    const rows = parseMinibusCsv(await response.text());
+    const headers = rows.shift().map(header => header.trim().toLowerCase());
+    const guestsColumn = headers.findIndex(header => header === 'minibus guests');
+
+    if (guestsColumn === -1) throw new Error('A coluna de lugares do minibus não foi encontrada.');
+
+    minibusReservedPeople = rows.reduce((total, row) => {
+      const guests = Number.parseInt(row[guestsColumn], 10);
+      return total + (Number.isInteger(guests) && guests > 0 ? guests : 0);
+    }, 0);
+    minibusAvailabilityReady = true;
+    updateMinibusAvailability();
+  } catch (error) {
+    minibusAvailability.textContent = 'Não foi possível confirmar as vagas neste momento.';
+    minibusAvailability.classList.add('sold-out');
+    minibusToggle.hidden = true;
+    minibusBooking.setAttribute('hidden', '');
+  }
+}
 
 if (minibusToggle && minibusBooking && minibusForm) {
+  loadMinibusAvailability();
+
   minibusToggle.addEventListener('click', () => {
     const isOpen = !minibusBooking.hasAttribute('hidden');
     minibusBooking.toggleAttribute('hidden', isOpen);
@@ -826,6 +933,18 @@ if (minibusToggle && minibusBooking && minibusForm) {
 
   minibusForm.addEventListener('submit', async event => {
     event.preventDefault();
+    const remainingBeforeSubmit = Math.max(0, MINIBUS_CAPACITY - minibusReservedPeople);
+    const guestCount = Number.parseInt(minibusGuests.value, 10);
+
+    if (!Number.isInteger(guestCount) || guestCount < 1 || guestCount > remainingBeforeSubmit) {
+      minibusMessage.textContent = remainingBeforeSubmit > 0
+        ? `Pode reservar no máximo ${remainingBeforeSubmit} ${remainingBeforeSubmit === 1 ? 'lugar' : 'lugares'}.`
+        : 'As reservas de minibus estão encerradas.';
+      minibusMessage.className = 'minibus-form-message error';
+      updateMinibusAvailability();
+      return;
+    }
+
     minibusMessage.textContent = 'A enviar a sua reserva…';
     minibusMessage.className = 'minibus-form-message';
 
@@ -837,12 +956,14 @@ if (minibusToggle && minibusBooking && minibusForm) {
       });
 
       if (!response.ok) throw new Error('Não foi possível enviar a reserva.');
+      minibusReservedPeople += guestCount;
       minibusForm.reset();
       minibusMessage.textContent = 'Reserva recebida. Obrigado!';
       minibusMessage.classList.add('success');
       minibusBooking.setAttribute('hidden', '');
       minibusToggle.setAttribute('aria-expanded', 'false');
       minibusToggle.textContent = 'Reservar minibus';
+      updateMinibusAvailability();
     } catch (error) {
       minibusMessage.textContent = 'Não foi possível enviar a reserva. Tente novamente.';
       minibusMessage.classList.add('error');

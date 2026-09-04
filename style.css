@@ -794,6 +794,23 @@ input::placeholder, textarea::placeholder {
   font-size: 0.98rem;
 }
 
+.minibus-availability {
+  margin-top: 14px;
+  color: var(--gold-dark);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.minibus-availability.sold-out {
+  color: #b85b4d;
+}
+
+.transport-booking-toggle[hidden] {
+  display: none;
+}
+
 .transport-booking .form-group {
   margin-bottom: 28px;
 }
