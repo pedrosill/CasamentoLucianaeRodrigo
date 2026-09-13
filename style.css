@@ -268,6 +268,19 @@ nav:not(.nav-hero) .hamburger span {
 
 @media (max-width: 768px) {
   .hero { background-attachment: scroll; }
+
+  .photos-notice {
+    margin-top: 24px;
+    max-width: calc(100vw - 48px);
+  }
+
+  .photos-section-image {
+    min-height: 0;
+  }
+
+  .photos-section-image img {
+    height: 300px;
+  }
 }
 
 .hero::after {
@@ -321,6 +334,51 @@ nav:not(.nav-hero) .hamburger span {
   animation: heroFade 1.4s ease 0.9s forwards;
 }
 
+.photos-notice {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 30px;
+  padding: 13px 18px;
+  border: 1px solid rgba(255,255,255,0.5);
+  background: rgba(20, 20, 20, 0.3);
+  backdrop-filter: blur(6px);
+  text-align: left;
+  opacity: 0;
+  animation: heroFade 1.4s ease 1.15s forwards;
+}
+
+.photos-notice-icon {
+  color: var(--gold-light);
+  font-size: 1.15rem;
+}
+
+.photos-notice strong {
+  display: block;
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.photos-notice a {
+  display: inline-block;
+  margin-top: 6px;
+  border-bottom: 1px solid var(--gold-light);
+  color: var(--gold-light);
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.photos-notice a span {
+  margin-left: 5px;
+  font-size: 0.9rem;
+}
+
 @keyframes heroFade {
   to { opacity: 1; transform: translateY(0); }
   from { opacity: 0; transform: translateY(18px); }
@@ -358,6 +416,89 @@ nav:not(.nav-hero) .hamburger span {
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.5; transform: scaleY(1); }
   50%       { opacity: 1;   transform: scaleY(0.7); }
+}
+
+/* ─── PHOTOS ANNOUNCEMENT SECTION ─────────────────────── */
+.photos-section {
+  background: var(--parchment);
+}
+
+.photos-section-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr);
+  align-items: center;
+  gap: clamp(40px, 8vw, 120px);
+}
+
+.photos-section-copy h2 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  letter-spacing: -1px;
+}
+
+.photos-section-copy p {
+  max-width: 335px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.photos-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding: 14px 18px;
+  background: var(--gold);
+  color: var(--white);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: background .25s ease, transform .25s ease;
+}
+
+.photos-cta:hover {
+  background: var(--gold-dark);
+  transform: translateY(-2px);
+}
+
+.photos-section-image {
+  display: block;
+  min-height: 350px;
+  margin: 0;
+}
+
+.photos-section-image img {
+  width: 100%;
+  height: clamp(300px, 38vw, 500px);
+  object-fit: cover;
+  object-position: center;
+  transition: transform .6s ease;
+}
+
+.photos-section-image:hover img {
+  transform: scale(1.025);
+}
+
+.photos-image-label {
+  position: absolute;
+  right: 18px;
+  bottom: 15px;
+  z-index: 1;
+  padding: 7px 9px;
+  background: rgba(20, 20, 20, 0.38);
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.photos-image-label span {
+  margin-left: 5px;
+  color: var(--gold-light);
+  font-size: 14px;
 }
 
 /* ─── SECTIONS ─────────────────────────────────────────── */
@@ -497,6 +638,16 @@ section {
   .split {
     grid-template-columns: 1fr;
   }
+
+  .photos-section-inner {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .photos-section-copy p {
+    max-width: 540px;
+  }
+
   .split-image {
     min-height: 320px;
     order: -1;
